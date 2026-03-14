@@ -8,6 +8,7 @@ def main():
         print(f"❌ Errore: La cartella '{tests_dir}' non esiste.")
         return
 
+    # Lista di tutti gli script di test
     test_files = [f for f in os.listdir(tests_dir) if f.endswith('.py') and f != '__init__.py']
     test_files.sort()
 

@@ -3,6 +3,10 @@ import mediapipe as mp
 import math
 
 class HandController:
+    """
+    pinch_threshold: Soglia per riconoscere l'attacco (pinch).
+    MediaPipe per tracciare fino a 2 mani
+    """
     def __init__(self, pinch_threshold=0.05):
         self.mp_hands = mp.solutions.hands
         self.hands = self.mp_hands.Hands(

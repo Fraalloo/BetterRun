@@ -11,7 +11,6 @@ class AudioController:
         self.max_volume = max_volume
         self.current_volume = 0.0
         
-        # Apriamo uno stream audio in background
         # Mono (channels=1), campionamento standard
         self.stream = sd.InputStream(channels=1, callback=self._audio_callback)
 
