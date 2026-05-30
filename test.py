@@ -5,7 +5,7 @@ import subprocess
 def main():
     tests_dir = "tests"
     if not os.path.isdir(tests_dir):
-        print(f"❌ Errore: La cartella '{tests_dir}' non esiste.")
+        print(f"Errore: La cartella '{tests_dir}' non esiste.")
         return
 
     # Lista di tutti gli script di test
@@ -13,11 +13,11 @@ def main():
     test_files.sort()
 
     if not test_files:
-        print(f"⚠️ Nessuno script trovato in '{tests_dir}'.")
+        print(f"Nessuno script trovato in '{tests_dir}'.")
         return
 
     print("\n" + "="*50)
-    print(" 🧪 TEST RUNNER CLI")
+    print("TEST RUNNER CLI")
     print("="*50)
     
     for i, file_name in enumerate(test_files):
@@ -29,7 +29,7 @@ def main():
         try:
             user_input = input("\nScegli il test da avviare: ").strip()
             if user_input == '0':
-                print("👋 Uscita.")
+                print("Uscita.")
                 break
             
             choice = int(user_input)
@@ -47,7 +47,7 @@ def main():
                         cam_idx = "0"
                     cmd_args.append(cam_idx)
 
-                print(f"\n🚀 Esecuzione: {' '.join(cmd_args)}")
+                print(f"\nEsecuzione: {' '.join(cmd_args)}")
                 print("-" * 50)
                 
                 # Configurazione ambiente di test
@@ -57,9 +57,9 @@ def main():
                 try:
                     subprocess.run(cmd_args, env=env, check=True)
                 except subprocess.CalledProcessError as e:
-                    print(f"\n❌ Lo script è terminato con un errore (Exit Code: {e.returncode})")
+                    print(f"\nLo script è terminato con un errore (Exit Code: {e.returncode})")
                 except KeyboardInterrupt:
-                    print("\n🛑 Test interrotto dall'utente.")
+                    print("\nTest interrotto dall'utente.")
 
                 print("-" * 50)
                 
@@ -74,9 +74,9 @@ def main():
                 print("="*50)
 
             else:
-                print("❌ Numero non valido.")
+                print("Numero non valido.")
         except ValueError:
-            print("❌ Per favore, inserisci un numero.")
+            print("Per favore, inserisci un numero.")
 
 if __name__ == "__main__":
     main()

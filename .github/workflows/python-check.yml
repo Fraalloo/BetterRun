@@ -1,0 +1,27 @@
+name: Python Checks
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  python-syntax:
+    name: Python Syntax
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Compile Python files
+        run: |
+          python -m compileall \
+            main.py \
+            test.py \
+            src \
+            tests

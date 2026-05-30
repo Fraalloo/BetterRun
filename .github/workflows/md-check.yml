@@ -1,0 +1,29 @@
+name: Markdown Checks
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  markdown-lint:
+    name: Markdown Lint
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Install markdownlint-cli2
+        run: npm install -g markdownlint-cli2
+
+      - name: Lint Markdown files
+        run: |
+          markdownlint-cli2 \
+            --config ".github/config/.markdownlint-cli2.jsonc" \
+            "ReadME.md" \
+            "docs/**/*.md"
