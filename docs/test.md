@@ -46,3 +46,33 @@ Comportamento atteso:
 - aumentando il volume, la barra si riempie;
 - a `max_volume=0.15` o oltre, la velocita' raggiunge il `100%`;
 - `Ctrl+C` ferma il test e chiude lo stream audio.
+
+## `tests/test_gui.py`
+
+Esegue una demo Pygame autonoma delle meccaniche di gioco, usando mouse e tastiera al posto dei controller reali.
+
+Comando:
+
+```bash
+python tests/test_gui.py
+```
+
+Controlli:
+
+| Input | Azione simulata |
+| --- | --- |
+| Movimento mouse | Movimento del giocatore. |
+| Click sinistro | Attacco/proiettile. |
+| Barra spaziatrice | Salto temporaneo. |
+| `W` | Aumenta il volume voce simulato. |
+| `S` | Diminuisce il volume voce simulato. |
+| Chiusura finestra | Termina la demo. |
+
+Meccaniche coperte:
+
+- il giocatore segue il mouse e resta nei limiti dello schermo;
+- il salto rende temporaneamente invulnerabili;
+- il click genera proiettili con cooldown;
+- i nemici scendono piu' velocemente quando aumenta il volume simulato;
+- il punteggio cresce con sopravvivenza, schivate e nemici distrutti;
+- la collisione giocatore-nemico termina la partita se il giocatore non sta saltando.
